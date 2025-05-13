@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import styles from '../contact/contact.module.css';
 
 export default function ShinnyuuseiPage() {
   const [formData, setFormData] = useState({
@@ -218,56 +217,60 @@ export default function ShinnyuuseiPage() {
           お問い合わせありがとうございます。メッセージが送信されました。
         </div>
       ) : (
-        <form className={styles.formrun} onSubmit={handleSubmit}>
-          <div>
-            <label>お名前</label>
+        <form className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md" onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">お名前</label>
             <input 
               name="name" 
               type="text" 
               value={formData.name}
               onChange={handleChange}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           
-          <div>
-            <label>メールアドレス</label>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">メールアドレス</label>
             <input 
               name="email" 
               type="email" 
               value={formData.email}
               onChange={handleChange}
               required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-            {errors.email && <div className="text-red-500">{errors.email}</div>}
+            {errors.email && <div className="text-red-500 text-xs mt-1">{errors.email}</div>}
           </div>
           
-          <div>
-            <label>お問い合わせ内容</label>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">お問い合わせ内容</label>
             <textarea 
               name="message" 
               value={formData.message}
               onChange={handleChange}
               required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
             ></textarea>
-            {errors.message && <div className="text-red-500">{errors.message}</div>}
+            {errors.message && <div className="text-red-500 text-xs mt-1">{errors.message}</div>}
           </div>
           
-          <div>
-            <label>
+          <div className="mb-6">
+            <label className="flex items-center">
               <input 
                 type="checkbox" 
                 name="privacy"
                 checked={formData.privacy}
                 onChange={handleChange}
                 required
+                className="mr-2"
               />
-              個人情報利用同意 [必須]
+              <span className="text-sm">個人情報利用同意 [必須]</span>
             </label>
-            {errors.privacy && <div className="text-red-500">{errors.privacy}</div>}
+            {errors.privacy && <div className="text-red-500 text-xs mt-1">{errors.privacy}</div>}
           </div>
           
           <button 
-            className={styles.button} 
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="submit" 
             disabled={isSubmitting}
           >
